@@ -1,0 +1,10 @@
+﻿
+<br />
+<br />
+<h1>Make Payment</h1>
+
+<form method="post" action="~/Payments/PaymentCheckOut">
+
+    <button type="submit" asp-controller="Payments" asp-action="PaymentCheckOut" asp-route-tamount="@ViewBag.OverallTAmount" class="btn btn-lg btn-primary">Make Payment</button>
+</form>
+  

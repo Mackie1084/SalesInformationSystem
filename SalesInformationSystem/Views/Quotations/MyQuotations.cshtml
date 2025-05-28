@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SalesInformationSystem.Models.Quotation>
+
+@{
+    ViewData["Title"] = "MyQuotations";
+}
+
+<h1>My Quotations</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QuotationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpiryDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+               @*  @Html.DisplayFor(modelItem => item.QuotationId) *@
+               <a asp-controller="QuotationItems" asp-action="ListQuotationItems" asp-route-id="@item.QuotationId">@item.QuotationId</a>
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpiryDate)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

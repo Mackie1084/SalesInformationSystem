@@ -1,0 +1,79 @@
+﻿@model IEnumerable<SalesInformationSystem.Models.CartItems>
+
+@{
+    ViewData["Title"] = "DisplayCartItems";
+}
+
+<h1>Your Items in the Cart</h1>
+
+<table class="table">
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductPrice)
+        </th>
+        <th>
+            Total Amount
+        </th>
+        <th>
+            Delete
+        </th>
+    </tr>
+</thead>
+<tbody>
+    @{
+        var OverallTotal = 0.0;
+    }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @{
+                    var tamount = item.Quantity * item.Price;
+                    OverallTotal = OverallTotal + tamount;
+                }
+                @tamount.ToString("C2")
+            </td>
+            <td>
+                 <a class="btn btn-md btn-danger" asp-controller="ShoppingCartItems" asp-action="DeleteCartItem" asp-route-id="@item.CartPk">Delete</a>
+            </td>
+        </tr>
+    }
+</tbody>
+</table>
+<br />
+<br />
+<h1>The total amount of orders is:@OverallTotal.ToString("C2")</h1>
+
+<br />
+<br />
+<div>
+    <a asp-controller="ShoppingCartItems" asp-action="CheckOut" class="btn btn-lg btn-success">Check Out</a>
+</div>
+<br />
+<br />
+<div>
+    <a asp-controller="Products" asp-action="GetAllProducts" class="btn btn-lg btn-primary">Continue Shopping</a>
+</div>
+          
