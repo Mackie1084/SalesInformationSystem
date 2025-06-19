@@ -20,8 +20,7 @@ namespace SalesInformationSystem.Controllers
         public const string CartSessionKey="CartId";
 
         private readonly ApplicationDbContext _context;
-       
-
+      
 
         public ShoppingCartItemsController(ApplicationDbContext context)
         {
