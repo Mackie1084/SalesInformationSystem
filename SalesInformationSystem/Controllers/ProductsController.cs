@@ -33,10 +33,10 @@ namespace SalesInformationSystem.Controllers
             return View(lstProducts);
         }
 
-        public async Task<IActionResult> GetAllProducts()
-        {
-            return View(await _context.Product.ToListAsync());
-        }
+        //public async Task<IActionResult> GetAllProducts()
+        //{
+        //    return View(await _context.Product.ToListAsync());
+        //}
 
         public async Task<IActionResult> Index()
         {
